@@ -6,20 +6,22 @@ function StatsCard({ title, value, icon }) {
   return (
     <Tilt
       glareEnable={true}
-      glareMaxOpacity={0.2}
+      glareMaxOpacity={0.25}
       scale={1.05}
-      tiltMaxAngleX={10}
-      tiltMaxAngleY={10}
+      tiltMaxAngleX={12}
+      tiltMaxAngleY={12}
+      transitionSpeed={2500}
       className="rounded-xl"
     >
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 25 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="bg-white/5 backdrop-blur-lg border border-white/10 
-                   rounded-xl p-6 shadow-lg 
-                   hover:shadow-cyan-500/30 
-                   hover:border-cyan-400/40 
+        transition={{ duration: 0.4 }}
+        className="bg-white/5 backdrop-blur-lg border border-white/10
+                   rounded-xl p-6 
+                   shadow-xl shadow-black/30
+                   hover:shadow-cyan-500/30
+                   hover:border-cyan-400/40
                    transition-all duration-300"
       >
         <div className="flex justify-between items-center">
@@ -38,7 +40,6 @@ function StatsCard({ title, value, icon }) {
           </div>
         </div>
 
-        {/* Neon Progress Bar */}
         <ProgressBar value={Math.min(value * 5, 100)} />
       </motion.div>
     </Tilt>

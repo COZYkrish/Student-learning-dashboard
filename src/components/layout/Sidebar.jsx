@@ -24,7 +24,7 @@ function Sidebar() {
                 className={`p-3 rounded-lg cursor-pointer transition-all duration-300 ${
                   isActive
                     ? "bg-cyan-500/20 text-cyan-400 shadow-lg shadow-cyan-500/20"
-                    : "text-gray-300 hover:bg-white/10"
+                    : "text-gray-300 hover:bg-cyan-500/10 hover:text-cyan-400"
                 }`}
               >
                 {link.name}

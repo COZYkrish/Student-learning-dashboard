@@ -14,15 +14,27 @@ function AnalyticsChart() {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl p-6 mt-10"
+      className="bg-white/5 backdrop-blur-lg border border-white/10 
+                 rounded-xl p-6 mt-10 
+                 shadow-xl shadow-black/30"
     >
-      <h2 className="text-xl mb-4 text-cyan-400">Weekly Progress</h2>
+      <h2 className="text-xl mb-4 text-cyan-400 font-semibold">
+        Weekly Progress
+      </h2>
+
       <ResponsiveContainer width="100%" height={250}>
         <LineChart data={data}>
           <XAxis dataKey="name" stroke="#aaa" />
           <YAxis stroke="#aaa" />
           <Tooltip />
-          <Line type="monotone" dataKey="progress" stroke="#00ffff" strokeWidth={3} />
+          <Line
+            type="monotone"
+            dataKey="progress"
+            stroke="#22d3ee"
+            strokeWidth={3}
+            dot={{ r: 5 }}
+            activeDot={{ r: 8 }}
+          />
         </LineChart>
       </ResponsiveContainer>
     </motion.div>
