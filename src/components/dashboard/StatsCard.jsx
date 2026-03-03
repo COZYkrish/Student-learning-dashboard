@@ -1,24 +1,47 @@
 import { motion } from "framer-motion"
+import Tilt from "react-parallax-tilt"
+import ProgressBar from "../ui/ProgressBar"
 
 function StatsCard({ title, value, icon }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      whileHover={{ scale: 1.05 }}
-      transition={{ duration: 0.4 }}
-      className="bg-white/5 backdrop-blur-lg border border-white/10 
-                 rounded-xl p-6 shadow-lg hover:shadow-cyan-500/20 
-                 hover:border-cyan-400/30 transition-all duration-300"
+    <Tilt
+      glareEnable={true}
+      glareMaxOpacity={0.2}
+      scale={1.05}
+      tiltMaxAngleX={10}
+      tiltMaxAngleY={10}
+      className="rounded-xl"
     >
-      <div className="flex justify-between items-center">
-        <div>
-          <p className="text-gray-400 text-sm">{title}</p>
-          <h2 className="text-3xl font-bold mt-2 text-white">{value}</h2>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="bg-white/5 backdrop-blur-lg border border-white/10 
+                   rounded-xl p-6 shadow-lg 
+                   hover:shadow-cyan-500/30 
+                   hover:border-cyan-400/40 
+                   transition-all duration-300"
+      >
+        <div className="flex justify-between items-center">
+          <div>
+            <p className="text-gray-400 text-sm tracking-wide">
+              {title}
+            </p>
+
+            <h2 className="text-3xl font-bold mt-2 text-white">
+              {value}
+            </h2>
+          </div>
+
+          <div className="text-3xl text-cyan-400 drop-shadow-lg">
+            {icon}
+          </div>
         </div>
-        <div className="text-3xl text-cyan-400">{icon}</div>
-      </div>
-    </motion.div>
+
+        {/* Neon Progress Bar */}
+        <ProgressBar value={Math.min(value * 5, 100)} />
+      </motion.div>
+    </Tilt>
   )
 }
 
