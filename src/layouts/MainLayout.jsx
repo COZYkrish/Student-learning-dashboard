@@ -1,14 +1,34 @@
+import { motion } from "framer-motion"
 import Sidebar from "../components/layout/Sidebar"
 import Navbar from "../components/layout/Navbar"
+import ParticlesBg from "../components/ui/ParticlesBg"
 
 function MainLayout({ children }) {
   return (
-    <div className="bg-slate-950 min-h-screen text-white">
+    <div className="relative min-h-screen bg-slate-950 text-white overflow-hidden">
+      
+      {/* Floating Particles Background */}
+      <ParticlesBg />
+
+      {/* Layout Content */}
       <Sidebar />
       <Navbar />
-      <div className="ml-64 pt-16 p-8">
+
+      {/* Main Page Content */}
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+        className="ml-64 pt-16 p-8 relative z-10"
+      >
         {children}
-      </div>
+      </motion.div>
+
+      {/* Soft Glow Effect */}
+      <div className="absolute top-0 left-0 w-96 h-96 
+                      bg-cyan-500/10 blur-3xl rounded-full -z-10" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 
+                      bg-purple-500/10 blur-3xl rounded-full -z-10" />
     </div>
   )
 }
