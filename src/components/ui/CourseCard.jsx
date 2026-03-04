@@ -25,16 +25,17 @@ function CourseCard({ course }) {
 
   return (
     <motion.div
-      whileHover={{ scale: 1.05 }}
-      transition={{ type: "spring", stiffness: 200 }}
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      whileHover={{ scale: 1.07, boxShadow: "0 0 32px #0ff, 0 0 8px #6366f1" }}
+      transition={{ type: "spring", stiffness: 180 }}
     >
       <Card>
-
-        <h3 className="text-lg font-semibold mb-2">
+        <h3 className="text-xl font-bold mb-2 text-cyan-300 tracking-wide drop-shadow-lg">
           {course.title}
         </h3>
 
-        <p className="text-sm text-gray-400 mb-3">
+        <p className="text-base text-cyan-200 mb-3 font-medium">
           {course.completed}/{course.lessons} lessons
         </p>
 

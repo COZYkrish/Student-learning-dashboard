@@ -5,8 +5,7 @@ import ParticlesBg from "../components/ui/ParticlesBg"
 
 function MainLayout({ children }) {
   return (
-    <div className="relative min-h-screen bg-slate-950 text-white overflow-hidden">
-      
+    <div className="relative min-h-screen bg-slate-950 text-cyan-100 font-montserrat overflow-hidden">
       {/* Floating Particles Background */}
       <ParticlesBg />
 
@@ -25,10 +24,8 @@ function MainLayout({ children }) {
       </motion.div>
 
       {/* Soft Glow Effect */}
-      <div className="absolute top-0 left-0 w-96 h-96 
-                      bg-cyan-500/10 blur-3xl rounded-full -z-10" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 
-                      bg-purple-500/10 blur-3xl rounded-full -z-10" />
+      <div className="absolute top-0 left-0 w-96 h-96 bg-cyan-400/20 blur-3xl rounded-full -z-10 animate-pulse" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-400/20 blur-3xl rounded-full -z-10 animate-pulse" />
     </div>
   )
 }

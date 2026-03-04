@@ -1,24 +1,32 @@
-import Particles from "react-tsparticles"
-import { loadFull } from "tsparticles"
+import { useCallback } from "react"
+import Particles from "@tsparticles/react"
+import { loadSlim } from "@tsparticles/slim"
 
 function ParticlesBg() {
-  const particlesInit = async (main) => {
-    await loadFull(main)
-  }
+
+  const particlesInit = useCallback(async (engine) => {
+    await loadSlim(engine)
+  }, [])
 
   return (
     <Particles
+      id="tsparticles"
       init={particlesInit}
       options={{
-        background: { color: "transparent" },
-        particles: {
-          number: { value: 40 },
-          color: { value: "#00ffff" },
-          size: { value: 2 },
-          move: { enable: true, speed: 1 },
+        background: {
+          color: "#020617"
         },
+        particles: {
+          number: { value: 60 },
+          size: { value: 2 },
+          move: { speed: 1 },
+          links: {
+            enable: true,
+            distance: 120,
+            color: "#6366f1"
+          }
+        }
       }}
-      className="absolute top-0 left-0 w-full h-full -z-10"
     />
   )
 }
