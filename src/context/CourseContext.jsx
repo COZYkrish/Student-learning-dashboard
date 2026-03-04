@@ -1,10 +1,11 @@
 import { createContext, useState } from "react";
+import { sampleCourses } from "../data/sampleCourses";
 
 export const CourseContext = createContext();
 
 export const CourseProvider = ({ children }) => {
 
-  const [courses, setCourses] = useState([]);
+  const [courses, setCourses] = useState(sampleCourses);
 
   const addCourse = (course) => {
     setCourses([...courses, course]);
