@@ -14,9 +14,15 @@ function Dashboard() {
   const { courses } = useContext(CourseContext)
 
   const [showModal, setShowModal] = useState(false)
+  const [search, setSearch] = useState("")
 
   const completed = useCountUp(8)
   const streak = useCountUp(15)
+
+  // 🔎 Filter courses based on search
+  const filteredCourses = courses.filter(course =>
+    course.title.toLowerCase().includes(search.toLowerCase())
+  )
 
   return (
     <motion.div
@@ -75,13 +81,26 @@ function Dashboard() {
       {/* Courses Section */}
       <div className="mt-12">
 
-        <h2 className="text-2xl font-semibold mb-6">
-          Your Courses
-        </h2>
+        <div className="flex items-center justify-between mb-6">
+
+          <h2 className="text-2xl font-semibold">
+            Your Courses
+          </h2>
+
+          {/* 🔎 Search Input */}
+          <input
+            type="text"
+            placeholder="Search courses..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="bg-slate-800 text-sm px-3 py-2 rounded-lg outline-none border border-slate-700"
+          />
+
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
 
-          {courses.map((course) => (
+          {filteredCourses.map((course) => (
             <CourseCard
               key={course.id}
               course={course}
