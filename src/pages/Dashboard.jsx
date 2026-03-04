@@ -1,7 +1,7 @@
 import { motion } from "framer-motion"
 import StatsCard from "../components/dashboard/StatsCard"
 import AnalyticsChart from "../components/dashboard/AnalyticsChart"
-import CourseCard from "../components/cards/CourseCard"
+import CourseCard from "../components/ui/CourseCard"
 import useCountUp from "../hooks/useCountUp"
 
 import { useContext } from "react"
@@ -56,7 +56,7 @@ function Dashboard() {
 
       </div>
 
-      {/* Course Section */}
+      {/* Courses Section */}
       <div className="mt-12">
 
         <h2 className="text-2xl font-semibold mb-6">
