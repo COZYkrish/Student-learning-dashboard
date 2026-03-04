@@ -1,15 +1,19 @@
 import { motion } from "framer-motion"
+import { useContext, useState } from "react"
+
 import StatsCard from "../components/dashboard/StatsCard"
 import AnalyticsChart from "../components/dashboard/AnalyticsChart"
 import CourseCard from "../components/ui/CourseCard"
-import useCountUp from "../hooks/useCountUp"
+import AddCourseModal from "../components/modals/AddCourseModal"
 
-import { useContext } from "react"
+import useCountUp from "../hooks/useCountUp"
 import { CourseContext } from "../context/CourseContext"
 
 function Dashboard() {
 
   const { courses } = useContext(CourseContext)
+
+  const [showModal, setShowModal] = useState(false)
 
   const completed = useCountUp(8)
   const streak = useCountUp(15)
@@ -23,14 +27,26 @@ function Dashboard() {
     >
 
       {/* Page Title */}
-      <div className="mb-10">
-        <h1 className="text-4xl font-bold tracking-wide">
-          Dashboard 🚀
-        </h1>
+      <div className="mb-10 flex items-center justify-between">
 
-        <p className="text-gray-400 mt-2">
-          Track your learning progress in real-time
-        </p>
+        <div>
+          <h1 className="text-4xl font-bold tracking-wide">
+            Dashboard 🚀
+          </h1>
+
+          <p className="text-gray-400 mt-2">
+            Track your learning progress in real-time
+          </p>
+        </div>
+
+        {/* Add Course Button */}
+        <button
+          onClick={() => setShowModal(true)}
+          className="bg-indigo-600 hover:bg-indigo-700 transition px-4 py-2 rounded-lg font-medium"
+        >
+          + Add Course
+        </button>
+
       </div>
 
       {/* Stats Grid */}
@@ -80,6 +96,11 @@ function Dashboard() {
       <div className="mt-12">
         <AnalyticsChart />
       </div>
+
+      {/* Add Course Modal */}
+      {showModal && (
+        <AddCourseModal close={() => setShowModal(false)} />
+      )}
 
     </motion.div>
   )
