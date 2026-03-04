@@ -1,43 +1,59 @@
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts"
-import { motion } from "framer-motion"
+import { useContext } from "react"
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+  CartesianGrid
+} from "recharts"
 
-const data = [
-  { name: "Mon", progress: 30 },
-  { name: "Tue", progress: 50 },
-  { name: "Wed", progress: 40 },
-  { name: "Thu", progress: 70 },
-  { name: "Fri", progress: 90 },
-]
+import { CourseContext } from "../../context/CourseContext"
 
 function AnalyticsChart() {
+
+  const { courses } = useContext(CourseContext)
+
+  // Convert courses to chart data
+  const data = courses.map(course => ({
+    name: course.title,
+    progress: course.progress
+  }))
+
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="bg-white/5 backdrop-blur-lg border border-white/10 
-                 rounded-xl p-6 mt-10 
-                 shadow-xl shadow-black/30"
-    >
-      <h2 className="text-xl mb-4 text-cyan-400 font-semibold">
-        Weekly Progress
+    <div className="bg-slate-900 p-6 rounded-xl border border-slate-800">
+
+      <h2 className="text-xl font-semibold mb-4">
+        Course Progress Analytics
       </h2>
 
-      <ResponsiveContainer width="100%" height={250}>
-        <LineChart data={data}>
-          <XAxis dataKey="name" stroke="#aaa" />
-          <YAxis stroke="#aaa" />
-          <Tooltip />
-          <Line
-            type="monotone"
-            dataKey="progress"
-            stroke="#22d3ee"
-            strokeWidth={3}
-            dot={{ r: 5 }}
-            activeDot={{ r: 8 }}
+      <ResponsiveContainer width="100%" height={300}>
+        <BarChart data={data}>
+
+          <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+
+          <XAxis
+            dataKey="name"
+            stroke="#94a3b8"
           />
-        </LineChart>
+
+          <YAxis
+            stroke="#94a3b8"
+          />
+
+          <Tooltip />
+
+          <Bar
+            dataKey="progress"
+            fill="#6366f1"
+            radius={[6,6,0,0]}
+          />
+
+        </BarChart>
       </ResponsiveContainer>
-    </motion.div>
+
+    </div>
   )
 }
 
