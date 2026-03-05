@@ -1,9 +1,23 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 
 function PomodoroTimer() {
 
-  const [time, setTime] = useState(25 * 60)
+  const [time, setTime] = useState(1500)
+  const [running, setRunning] = useState(false)
+
+  useEffect(() => {
+    let interval
+
+    if (running && time > 0) {
+      interval = setInterval(() => {
+        setTime(prev => prev - 1)
+      }, 1000)
+    }
+
+    return () => clearInterval(interval)
+  }, [running, time])
+
   const minutes = Math.floor(time / 60)
   const seconds = time % 60
 
@@ -12,6 +26,7 @@ function PomodoroTimer() {
       className="bg-slate-900 p-6 rounded-2xl shadow-lg"
       whileHover={{ scale: 1.03 }}
     >
+
       <h2 className="text-xl font-semibold mb-4">
         ⏱ Pomodoro Study Timer
       </h2>
@@ -21,13 +36,21 @@ function PomodoroTimer() {
       </div>
 
       <div className="flex gap-3 justify-center">
-        <button className="bg-blue-500 px-4 py-2 rounded-lg">
-          Start
+
+        <button
+          onClick={() => setRunning(!running)}
+          className="bg-green-500 px-4 py-2 rounded-lg"
+        >
+          {running ? "Pause" : "Start"}
         </button>
 
-        <button className="bg-red-500 px-4 py-2 rounded-lg">
+        <button
+          onClick={() => setTime(1500)}
+          className="bg-red-500 px-4 py-2 rounded-lg"
+        >
           Reset
         </button>
+
       </div>
     </motion.div>
   )
