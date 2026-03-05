@@ -8,7 +8,7 @@ import AddCourseModal from "../components/modals/AddCourseModal"
 
 import useCountUp from "../hooks/useCountUp"
 import { CourseContext } from "../context/CourseContext"
-
+import PomodoroTimer from "../components/productivity/PomodoroTimer"
 function Dashboard() {
 
   const { courses } = useContext(CourseContext)
@@ -114,6 +114,11 @@ function Dashboard() {
       {/* Analytics Section */}
       <div className="mt-12">
         <AnalyticsChart />
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+
+      <PomodoroTimer />
+
       </div>
 
       {/* Add Course Modal */}
