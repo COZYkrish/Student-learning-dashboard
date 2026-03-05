@@ -8,7 +8,12 @@ import AddCourseModal from "../components/modals/AddCourseModal"
 
 import useCountUp from "../hooks/useCountUp"
 import { CourseContext } from "../context/CourseContext"
+
 import PomodoroTimer from "../components/productivity/PomodoroTimer"
+import StreakTracker from "../components/productivity/StreakTracker"
+import DailyGoal from "../components/productivity/DailyGoal"
+import Achievements from "../components/productivity/Achievements"
+
 function Dashboard() {
 
   const { courses } = useContext(CourseContext)
@@ -115,9 +120,18 @@ function Dashboard() {
       <div className="mt-12">
         <AnalyticsChart />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
 
-      <PomodoroTimer />
+      {/* Pomodoro Timer */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+        <PomodoroTimer />
+      </div>
+
+      {/* Productivity Widgets */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+
+        <StreakTracker />
+        <DailyGoal />
+        <Achievements />
 
       </div>
 
