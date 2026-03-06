@@ -1,26 +1,85 @@
 @import "tailwindcss";
 
+:root {
+  --bg-base: #0b1220;
+  --bg-elevated: #121c2f;
+  --surface: rgba(18, 28, 47, 0.72);
+  --surface-strong: rgba(23, 36, 61, 0.92);
+  --border-subtle: rgba(148, 163, 184, 0.18);
+  --text-main: #e2e8f0;
+  --text-muted: #94a3b8;
+  --brand: #2dd4bf;
+  --brand-strong: #0f766e;
+  --accent: #f59e0b;
+}
+
 body {
-  background: linear-gradient(120deg, #0f172a 0%, #020617 100%);
+  background:
+    radial-gradient(circle at 12% 14%, rgba(45, 212, 191, 0.14), transparent 34%),
+    radial-gradient(circle at 88% 16%, rgba(245, 158, 11, 0.12), transparent 30%),
+    radial-gradient(circle at 50% 80%, rgba(56, 189, 248, 0.08), transparent 36%),
+    linear-gradient(140deg, #0b1220 0%, #070d18 42%, #0d1323 100%);
   min-height: 100vh;
-  font-family: 'Montserrat', 'Segoe UI', 'Roboto', sans-serif;
-  color: #e0e7ef;
+  font-family: "Outfit", "Montserrat", "Segoe UI", "Roboto", sans-serif;
+  color: var(--text-main);
+  overflow-x: hidden;
 }
 
 body::before {
   content: "";
   position: fixed;
-  top: -200px;
-  left: -200px;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(0,255,255,0.18), transparent);
-  filter: blur(120px);
+  top: -160px;
+  left: -180px;
+  width: 540px;
+  height: 540px;
+  background: radial-gradient(circle, rgba(45, 212, 191, 0.22), transparent 68%);
+  filter: blur(100px);
   z-index: -1;
-  animation: glowMove 8s linear infinite alternate;
+  animation: glowMove 10s linear infinite alternate;
 }
 
 @keyframes glowMove {
-  0% { top: -200px; left: -200px; opacity: 0.7; }
-  100% { top: 100px; left: 100px; opacity: 1; }
+  0% { transform: translate3d(0, 0, 0); opacity: 0.64; }
+  100% { transform: translate3d(140px, 120px, 0); opacity: 0.94; }
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(
+    rgba(148, 163, 184, 0.04) 1px,
+    transparent 1px
+  );
+  background-size: 100% 42px;
+  z-index: -1;
+}
+
+.glass-panel {
+  background: var(--surface);
+  backdrop-filter: blur(18px);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 14px 38px rgba(2, 6, 23, 0.34);
+}
+
+.glass-strong {
+  background: var(--surface-strong);
+  backdrop-filter: blur(18px);
+  border: 1px solid var(--border-subtle);
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, var(--brand), #67e8f9, var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  background: var(--brand);
+  box-shadow: 0 0 0 4px rgba(45, 212, 191, 0.2);
 }

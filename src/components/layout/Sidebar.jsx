@@ -8,32 +8,47 @@ const links = [
   { name: "Profile", path: "/profile" },
 ]
 
-function Sidebar() {
+function Sidebar({ open, onClose }) {
   return (
-    <div className="h-screen w-64 bg-white/5 backdrop-blur-lg border-r border-white/10 p-6 fixed">
-      <h1 className="text-2xl font-bold text-cyan-400 mb-10">
-        LearnTrack
-      </h1>
+    <>
+      {open && (
+        <button
+          type="button"
+          aria-label="Close menu"
+          className="fixed inset-0 bg-slate-950/60 z-30 md:hidden"
+          onClick={onClose}
+        />
+      )}
 
-      <div className="space-y-4">
-        {links.map((link, index) => (
-          <NavLink key={index} to={link.path}>
-            {({ isActive }) => (
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className={`p-3 rounded-lg cursor-pointer transition-all duration-300 ${
-                  isActive
-                    ? "bg-cyan-500/20 text-cyan-400 shadow-lg shadow-cyan-500/20"
-                    : "text-gray-300 hover:bg-cyan-500/10 hover:text-cyan-400"
-                }`}
-              >
-                {link.name}
-              </motion.div>
-            )}
-          </NavLink>
-        ))}
-      </div>
-    </div>
+      <aside
+        className={`fixed inset-y-0 left-0 w-64 glass-strong p-6 z-40 border-r border-slate-200/10 transition-transform duration-300 ${
+          open ? "translate-x-0" : "-translate-x-full md:translate-x-0"
+        }`}
+      >
+        <h1 className="text-2xl font-bold mb-10">
+          <span className="gradient-text">LearnTrack</span>
+        </h1>
+
+        <div className="space-y-3">
+          {links.map((link) => (
+            <NavLink key={link.path} to={link.path} onClick={onClose}>
+              {({ isActive }) => (
+                <motion.div
+                  whileHover={{ x: 4 }}
+                  className={`p-3 rounded-xl cursor-pointer transition-all duration-300 ${
+                    isActive
+                      ? "bg-teal-500/20 text-teal-300 border border-teal-300/30"
+                      : "text-slate-300 hover:bg-slate-700/40 hover:text-white border border-transparent"
+                  }`}
+                >
+                  {link.name}
+                </motion.div>
+              )}
+            </NavLink>
+          ))}
+        </div>
+      </aside>
+    </>
   )
 }
 

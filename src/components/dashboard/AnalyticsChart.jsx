@@ -13,50 +13,57 @@ import {
 import { CourseContext } from "../../context/CourseContext"
 
 function AnalyticsChart() {
-
   const { courses } = useContext(CourseContext)
 
-  // Convert courses to chart data
-  const data = courses.map(course => ({
+  const data = courses.map((course) => ({
     name: course.title,
-    progress: course.progress
+    progress: course.progress,
   }))
+
+  const topCourse = [...courses].sort((a, b) => b.progress - a.progress)[0]
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="bg-white/5 backdrop-blur-lg border border-cyan-400/30 rounded-2xl p-8 shadow-xl shadow-cyan-500/10 hover:shadow-cyan-500/30 hover:border-cyan-400/60 transition-all duration-300"
-      style={{ boxShadow: "0 4px 32px 0 #0ff2, 0 1.5px 8px 0 #6366f1" }}
+      className="glass-panel rounded-2xl p-6 md:p-8 transition-all duration-300 hover:border-teal-300/40"
     >
-      <h2 className="text-2xl font-bold mb-6 text-cyan-300 tracking-wide drop-shadow-lg">
-        Course Progress Analytics
-      </h2>
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+        <h2 className="text-2xl font-bold tracking-wide">Course Progress Analytics</h2>
+        {topCourse && (
+          <p className="text-sm text-slate-300">
+            Top performer:{" "}
+            <span className="text-teal-300 font-semibold">
+              {topCourse.title} ({topCourse.progress}%)
+            </span>
+          </p>
+        )}
+      </div>
 
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#6366f1" />
-          <XAxis
-            dataKey="name"
-            stroke="#94a3b8"
-          />
+          <CartesianGrid strokeDasharray="4 4" stroke="#334155" />
+          <XAxis dataKey="name" stroke="#94a3b8" />
 
-          <YAxis
-            stroke="#94a3b8"
-          />
+          <YAxis stroke="#94a3b8" />
 
-          <Tooltip />
+          <Tooltip
+            contentStyle={{
+              background: "#0f172a",
+              border: "1px solid rgba(148,163,184,0.25)",
+              borderRadius: "12px",
+              color: "#e2e8f0",
+            }}
+          />
 
           <Bar
             dataKey="progress"
-            fill="#6366f1"
-            radius={[6,6,0,0]}
+            fill="#2dd4bf"
+            radius={[8, 8, 0, 0]}
           />
-
         </BarChart>
       </ResponsiveContainer>
-
     </motion.div>
   )
 }

@@ -17,26 +17,25 @@ function StatsCard({ title, value, icon }) {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="bg-white/5 backdrop-blur-lg border border-cyan-400/30 rounded-2xl p-7 shadow-xl shadow-cyan-500/10 hover:shadow-cyan-500/30 hover:border-cyan-400/60 transition-all duration-300"
-        style={{ boxShadow: "0 4px 32px 0 #0ff2, 0 1.5px 8px 0 #6366f1" }}
+        className="glass-panel rounded-2xl p-7 transition-all duration-300 hover:border-teal-300/40"
       >
         <div className="flex justify-between items-center">
           <div>
-            <p className="text-cyan-300 text-sm tracking-wide font-medium drop-shadow">
+            <p className="text-slate-300 text-sm tracking-wide font-medium">
               {title}
             </p>
 
-            <h2 className="text-4xl font-extrabold mt-2 text-white drop-shadow-lg">
+            <h2 className="text-4xl font-extrabold mt-2 text-white">
               {value}
             </h2>
           </div>
 
-          <div className="text-4xl text-cyan-400 drop-shadow-xl animate-pulse">
+          <div className="text-4xl text-teal-300">
             {icon}
           </div>
         </div>
 
-        <ProgressBar value={Math.min(value * 5, 100)} />
+        <ProgressBar value={Math.min(Number(value) * 5, 100)} />
       </motion.div>
     </Tilt>
   )

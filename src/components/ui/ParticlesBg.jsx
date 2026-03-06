@@ -12,20 +12,23 @@ function ParticlesBg() {
     <Particles
       id="tsparticles"
       init={particlesInit}
+      className="absolute inset-0 -z-20"
       options={{
-        background: {
-          color: "#020617"
-        },
+        fpsLimit: 120,
+        fullScreen: { enable: false },
         particles: {
-          number: { value: 60 },
-          size: { value: 2 },
-          move: { speed: 1 },
+          number: { value: 44 },
+          size: { value: { min: 1, max: 3 } },
+          move: { speed: 0.65 },
+          opacity: { value: 0.22 },
           links: {
             enable: true,
-            distance: 120,
-            color: "#6366f1"
-          }
-        }
+            distance: 130,
+            color: "#2dd4bf",
+            opacity: 0.2,
+          },
+          color: { value: ["#2dd4bf", "#f59e0b", "#38bdf8"] },
+        },
       }}
     />
   )
