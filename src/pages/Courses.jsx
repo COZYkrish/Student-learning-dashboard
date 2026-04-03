@@ -59,7 +59,7 @@ function Courses() {
           <p className="text-slate-400 text-sm">Filtered Results</p>
           <p className="text-2xl font-semibold">{filtered.length}</p>
         </div>
-      </div>
+      </div>no
 
       <div className="glass-panel rounded-2xl p-4 mb-6 grid grid-cols-1 md:grid-cols-3 gap-3">
         <input
