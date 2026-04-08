@@ -60,14 +60,14 @@ function Courses() {
           <p className="text-2xl font-semibold">{filtered.length}</p>
         </div>
       </div>no
-{/* 
+
       <div className="glass-panel rounded-2xl p-4 mb-6 grid grid-cols-1 md:grid-cols-3 gap-3">
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search by course name"
           className="glass-strong rounded-lg px-3 py-2 border border-slate-600/50 outline-none"
-        /> */}
+        />
 
         <select
           value={category}
