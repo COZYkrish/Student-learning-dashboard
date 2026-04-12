@@ -69,14 +69,14 @@ function Courses() {
           className="glass-strong rounded-lg px-3 py-2 border border-slate-600/50 outline-none"
         />
 
-        {/* <select
+        <select
           value={category}
           onChange={(e) => setCategory(e.target.value)}
           className="glass-strong rounded-lg px-3 py-2 border border-slate-600/50 outline-none"
         >
           {categories.map((option) => (
-            // <option key={option} value={option} className="bg-slate-900">
-            //   {option} */}
+            <option key={option} value={option} className="bg-slate-900">
+              {option}
             </option>
           ))}
         </select>
