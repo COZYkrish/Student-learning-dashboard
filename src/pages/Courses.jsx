@@ -81,10 +81,10 @@ function Courses() {
           ))}
         </select>
 
-        <select
+        {/* <select
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value)}
-          className="glass-strong rounded-lg px-3 py-2 border border-slate-600/50 outline-none"
+          className="glass-strong rounded-lg px-3 py-2 border border-slate-600/50 outline-none" */}
       //   >
       //     <option value="progress_desc" className="bg-slate-900">Highest Progress</option>
       //     <option value="progress_asc" className="bg-slate-900">Lowest Progress</option>
