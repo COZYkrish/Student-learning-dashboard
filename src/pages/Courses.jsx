@@ -85,12 +85,12 @@ function Courses() {
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value)}
           className="glass-strong rounded-lg px-3 py-2 border border-slate-600/50 outline-none"
-        >
-          <option value="progress_desc" className="bg-slate-900">Highest Progress</option>
-          <option value="progress_asc" className="bg-slate-900">Lowest Progress</option>
-          <option value="title_asc" className="bg-slate-900">Alphabetical</option>
-        </select>
-      </div>
+      //   >
+      //     <option value="progress_desc" className="bg-slate-900">Highest Progress</option>
+      //     <option value="progress_asc" className="bg-slate-900">Lowest Progress</option>
+      //     <option value="title_asc" className="bg-slate-900">Alphabetical</option>
+      //   </select>
+      // </div>
 
       {filtered.length === 0 ? (
         <p className="text-slate-400">No courses match your current filters.</p>
